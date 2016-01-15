@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>c18a797d-0ae9-4d69-84d1-d3e621fec9a0</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="AllJoynBusObjectManager.cpp" />
+    <ClCompile Include="AllJoynHelpers.cpp" />
+    <ClCompile Include="ControllerServiceConsumer.cpp" />
+    <ClCompile Include="ControllerServiceProducer.cpp" />
+    <ClCompile Include="ControllerServiceServiceEventAdapter.cpp" />
+    <ClCompile Include="ControllerServiceServiceEventArgs.cpp" />
+    <ClCompile Include="ControllerServiceSignals.cpp" />
+    <ClCompile Include="ControllerServiceWatcher.cpp" />
+    <ClCompile Include="TypeConversionHelpers.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="AllJoynBusObjectManager.h" />
+    <ClInclude Include="AllJoynHelpers.h" />
+    <ClInclude Include="ControllerServiceConsumer.h" />
+    <ClInclude Include="ControllerServiceEventArgs.h" />
+    <ClInclude Include="ControllerServiceMethodResults.h" />
+    <ClInclude Include="ControllerServiceProducer.h" />
+    <ClInclude Include="ControllerServiceServiceEventAdapter.h" />
+    <ClInclude Include="ControllerServiceServiceEventArgs.h" />
+    <ClInclude Include="ControllerServiceSignals.h" />
+    <ClInclude Include="ControllerServiceStructures.h" />
+    <ClInclude Include="ControllerServiceWatcher.h" />
+    <ClInclude Include="IControllerServiceService.h" />
+    <ClInclude Include="TypeConversionHelpers.h" />
+  </ItemGroup>
+</Project>

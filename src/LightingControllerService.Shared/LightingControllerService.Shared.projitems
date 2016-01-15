@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>8bc746ec-9fd8-4955-8b71-2e0e56860fa2</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>LightingControllerService</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ControllerService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ControllerService.PresetService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ControllerService.MasterSceneService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ControllerService.LampGroupService.I.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ControllerService.SceneService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ControllerService.LampService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ControllerServiceHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ControllerService.ControllerServiceService.cs" />
+  </ItemGroup>
+</Project>
