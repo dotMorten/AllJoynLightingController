@@ -12,12 +12,12 @@ namespace LightingControllerService
 {
     internal partial class ControllerService : ILampGroupService
     {
-        private Dictionary<string, LampGroup> lampGroups = new Dictionary<string, LampGroup>();
+        private Dictionary<string, LampGroup> LampGroups = new Dictionary<string, LampGroup>();
         private void SaveLampGroups()
         {
             var container = Windows.Storage.ApplicationData.Current.LocalSettings.CreateContainer("LampGroups", Windows.Storage.ApplicationDataCreateDisposition.Always);
             container.Values.Clear();
-            foreach(var group in lampGroups)
+            foreach(var group in LampGroups)
             {
                 container.Values[group.Key] = group.Value.Serialize();
             }
@@ -27,7 +27,7 @@ namespace LightingControllerService
             var container = Windows.Storage.ApplicationData.Current.LocalSettings.CreateContainer("LampGroups", Windows.Storage.ApplicationDataCreateDisposition.Always);
             foreach (var group in container.Values)
             {
-                lampGroups[group.Key] = LampGroup.FromString((string)group.Value);
+                LampGroups[group.Key] = LampGroup.FromString((string)group.Value);
             }
         }
 
@@ -89,7 +89,7 @@ namespace LightingControllerService
             string groupID = Guid.NewGuid().ToString();
 
             LampGroup group = new LampGroup(lampGroupName, language, lampIDs, lampGroupIDs);
-            lampGroups.Add(groupID, group);
+            LampGroups.Add(groupID, group);
             LampGroupProducer.Signals.LampGroupsCreated(new List<string>() { groupID }.AsReadOnly());
 
             SaveLampGroups();
@@ -99,31 +99,32 @@ namespace LightingControllerService
 
         IAsyncOperation<LampGroupDeleteLampGroupResult> ILampGroupService.DeleteLampGroupAsync(AllJoynMessageInfo info, string lampGroupID)
         {
-            if (!lampGroups.ContainsKey(lampGroupID))
+            if (!LampGroups.ContainsKey(lampGroupID))
                 return Task.FromResult(LampGroupDeleteLampGroupResult.CreateFailureResult(16)).AsAsyncOperation();
-            lampGroups.Remove(lampGroupID);
+            LampGroups.Remove(lampGroupID);
+            SaveLampGroups();
             LampGroupProducer.Signals.LampGroupsDeleted(new List<string> { lampGroupID });
             return Task.FromResult(LampGroupDeleteLampGroupResult.CreateSuccessResult(0, lampGroupID)).AsAsyncOperation();
         }
 
         IAsyncOperation<LampGroupGetAllLampGroupIDsResult> ILampGroupService.GetAllLampGroupIDsAsync(AllJoynMessageInfo info)
         {
-            return Task.FromResult(LampGroupGetAllLampGroupIDsResult.CreateSuccessResult(0, new List<string>(lampGroups.Keys))).AsAsyncOperation();
+            return Task.FromResult(LampGroupGetAllLampGroupIDsResult.CreateSuccessResult(0, new List<string>(LampGroups.Keys))).AsAsyncOperation();
         }
 
         IAsyncOperation<LampGroupGetLampGroupResult> ILampGroupService.GetLampGroupAsync(AllJoynMessageInfo info, string lampGroupID)
         {
-            if (!lampGroups.ContainsKey(lampGroupID))
+            if (!LampGroups.ContainsKey(lampGroupID))
                 return Task.FromResult(LampGroupGetLampGroupResult.CreateFailureResult(16)).AsAsyncOperation();
-            var group = lampGroups[lampGroupID];
+            var group = LampGroups[lampGroupID];
             return Task.FromResult(LampGroupGetLampGroupResult.CreateSuccessResult(0, lampGroupID, group.LampIds, group.LampGroupIds)).AsAsyncOperation();
         }
 
         IAsyncOperation<LampGroupGetLampGroupNameResult> ILampGroupService.GetLampGroupNameAsync(AllJoynMessageInfo info, string lampGroupID, string language)
         {
-            if (!lampGroups.ContainsKey(lampGroupID))
+            if (!LampGroups.ContainsKey(lampGroupID))
                 return Task.FromResult(LampGroupGetLampGroupNameResult.CreateFailureResult(16)).AsAsyncOperation();
-            var group = lampGroups[lampGroupID];
+            var group = LampGroups[lampGroupID];
 
             if (group.GroupName.ContainsKey(language))
                 return Task.FromResult(LampGroupGetLampGroupNameResult.CreateSuccessResult(0, lampGroupID, language, group.GroupName[language])).AsAsyncOperation();
@@ -137,70 +138,143 @@ namespace LightingControllerService
 
         IAsyncOperation<LampGroupSetLampGroupNameResult> ILampGroupService.SetLampGroupNameAsync(AllJoynMessageInfo info, string lampGroupID, string LampGroupName, string Language)
         {
-            if (!lampGroups.ContainsKey(lampGroupID))
+            if (!LampGroups.ContainsKey(lampGroupID))
                 return Task.FromResult(LampGroupSetLampGroupNameResult.CreateFailureResult(16)).AsAsyncOperation();
             if (string.IsNullOrEmpty(LampGroupName))
                 return Task.FromResult(LampGroupSetLampGroupNameResult.CreateFailureResult(12)).AsAsyncOperation();
             if (string.IsNullOrEmpty(Language))
                 return Task.FromResult(LampGroupSetLampGroupNameResult.CreateFailureResult(5)).AsAsyncOperation();
-            var group = lampGroups[lampGroupID];
+            var group = LampGroups[lampGroupID];
             group.GroupName[Language] = LampGroupName;
+            SaveLampGroups();
             LampGroupProducer.Signals.LampGroupsNameChanged(new List<string>() { lampGroupID }.AsReadOnly());
             return Task.FromResult(LampGroupSetLampGroupNameResult.CreateSuccessResult(0, lampGroupID, Language)).AsAsyncOperation();
         }
 
         IAsyncOperation<LampGroupUpdateLampGroupResult> ILampGroupService.UpdateLampGroupAsync(AllJoynMessageInfo info, string lampGroupID, IReadOnlyList<string> LampIDs, IReadOnlyList<string> lampGroupIDs)
         {
-            if (!lampGroups.ContainsKey(lampGroupID))
+            if (!LampGroups.ContainsKey(lampGroupID))
                 return Task.FromResult(LampGroupUpdateLampGroupResult.CreateFailureResult(16)).AsAsyncOperation();
-            var lampGroup = lampGroups[lampGroupID];
+            var lampGroup = LampGroups[lampGroupID];
             lampGroup.LampGroupIds = new List<string>(lampGroupIDs);
             lampGroup.LampIds = new List<string>(LampIDs);
+            SaveLampGroups();
             LampGroupProducer.Signals.LampGroupsUpdated(new List<string> { lampGroupID });
 
             return Task.FromResult(LampGroupUpdateLampGroupResult.CreateSuccessResult(0, lampGroupID)).AsAsyncOperation();
         }
 
-        IAsyncOperation<LampGroupResetLampGroupStateFieldResult> ILampGroupService.ResetLampGroupStateFieldAsync(AllJoynMessageInfo info, string lampGroupID, string LampGroupStateFieldName)
+        IAsyncOperation<LampGroupResetLampGroupStateFieldResult> ILampGroupService.ResetLampGroupStateFieldAsync(AllJoynMessageInfo info, string lampGroupID, string lampGroupStateFieldName)
         {
-            //TODO
-            return Task.FromResult(LampGroupResetLampGroupStateFieldResult.CreateFailureResult(7)).AsAsyncOperation();
+            if (!LampGroups.ContainsKey(lampGroupID))
+                return Task.FromResult(LampGroupResetLampGroupStateFieldResult.CreateFailureResult(16)).AsAsyncOperation();
+
+            var lampService = (org.allseen.LSF.ControllerService.Lamp.ILampService)this;
+            foreach (var id in GetUniqueLampIds(lampGroupID))
+            {
+                var _ = lampService.ResetLampStateFieldAsync(info, id, lampGroupStateFieldName);
+            }
+            return Task.FromResult(LampGroupResetLampGroupStateFieldResult.CreateFailureResult(0)).AsAsyncOperation();
         }
 
-        IAsyncOperation<LampGroupPulseLampGroupWithPresetResult> ILampGroupService.PulseLampGroupWithPresetAsync(AllJoynMessageInfo info, string lampGroupID, string FromPresetID, string ToPresetID, uint Period, uint Duration, uint NumPulses)
+        IAsyncOperation<LampGroupPulseLampGroupWithPresetResult> ILampGroupService.PulseLampGroupWithPresetAsync(AllJoynMessageInfo info, string lampGroupID, string fromPresetID, string toPresetID, uint period, uint duration, uint numPulses)
         {
-            //TODO
-            return Task.FromResult(LampGroupPulseLampGroupWithPresetResult.CreateFailureResult(7)).AsAsyncOperation();
+            if (!LampGroups.ContainsKey(lampGroupID))
+                return Task.FromResult(LampGroupPulseLampGroupWithPresetResult.CreateFailureResult(16)).AsAsyncOperation();
+
+            var lampService = (org.allseen.LSF.ControllerService.Lamp.ILampService)this;
+            foreach (var id in GetUniqueLampIds(lampGroupID))
+            {
+                var _ = lampService.PulseLampWithPresetAsync(info, id, fromPresetID, toPresetID, period, duration, numPulses);
+            }
+            return Task.FromResult(LampGroupPulseLampGroupWithPresetResult.CreateFailureResult(0)).AsAsyncOperation();
         }
 
-        IAsyncOperation<LampGroupPulseLampGroupWithStateResult> ILampGroupService.PulseLampGroupWithStateAsync(AllJoynMessageInfo info, string lampGroupID, IReadOnlyDictionary<string, object> FromLampGroupState, IReadOnlyDictionary<string, object> ToLampGroupState, uint Period, uint Duration, uint NumPulses)
+        IAsyncOperation<LampGroupPulseLampGroupWithStateResult> ILampGroupService.PulseLampGroupWithStateAsync(AllJoynMessageInfo info, string lampGroupID, IReadOnlyDictionary<string, object> FromLampGroupState, IReadOnlyDictionary<string, object> toLampGroupState, uint period, uint duration, uint numPulses)
         {
-            //TODO
-            return Task.FromResult(LampGroupPulseLampGroupWithStateResult.CreateFailureResult(7)).AsAsyncOperation();
+            if (!LampGroups.ContainsKey(lampGroupID))
+                return Task.FromResult(LampGroupPulseLampGroupWithStateResult.CreateFailureResult(16)).AsAsyncOperation();
+
+            var lampService = (org.allseen.LSF.ControllerService.Lamp.ILampService)this;
+            foreach (var id in GetUniqueLampIds(lampGroupID))
+            {
+                var _ = lampService.PulseLampWithStateAsync(info, id, FromLampGroupState, toLampGroupState, period, duration, numPulses);
+            }
+            return Task.FromResult(LampGroupPulseLampGroupWithStateResult.CreateFailureResult(0)).AsAsyncOperation();
         }
 
         IAsyncOperation<LampGroupResetLampGroupStateResult> ILampGroupService.ResetLampGroupStateAsync(AllJoynMessageInfo info, string lampGroupID)
         {
-            //TODO
-            return Task.FromResult(LampGroupResetLampGroupStateResult.CreateFailureResult(7)).AsAsyncOperation();
+            if (!LampGroups.ContainsKey(lampGroupID))
+                return Task.FromResult(LampGroupResetLampGroupStateResult.CreateFailureResult(16)).AsAsyncOperation();
+
+            var lampService = (org.allseen.LSF.ControllerService.Lamp.ILampService)this;
+            foreach (var id in GetUniqueLampIds(lampGroupID))
+            {
+                var _ = lampService.ResetLampStateAsync(info, id);
+            }
+            return Task.FromResult(LampGroupResetLampGroupStateResult.CreateFailureResult(0)).AsAsyncOperation();
         }
 
-        IAsyncOperation<LampGroupTransitionLampGroupStateResult> ILampGroupService.TransitionLampGroupStateAsync(AllJoynMessageInfo info, string lampGroupID, IReadOnlyDictionary<string, object> LampState, uint TransitionPeriod)
+        IAsyncOperation<LampGroupTransitionLampGroupStateResult> ILampGroupService.TransitionLampGroupStateAsync(AllJoynMessageInfo info, string lampGroupID, IReadOnlyDictionary<string, object> lampState, uint transitionPeriod)
         {
-            //TODO
-            return Task.FromResult(LampGroupTransitionLampGroupStateResult.CreateFailureResult(7)).AsAsyncOperation();
+            if (!LampGroups.ContainsKey(lampGroupID))
+                return Task.FromResult(LampGroupTransitionLampGroupStateResult.CreateFailureResult(16)).AsAsyncOperation();
+
+            var lampService = (org.allseen.LSF.ControllerService.Lamp.ILampService)this;
+            foreach (var id in GetUniqueLampIds(lampGroupID))
+            {
+                var _ = lampService.TransitionLampStateAsync(info, id, lampState, transitionPeriod);
+            }
+            return Task.FromResult(LampGroupTransitionLampGroupStateResult.CreateFailureResult(0)).AsAsyncOperation();
         }
 
-        IAsyncOperation<LampGroupTransitionLampGroupStateFieldResult> ILampGroupService.TransitionLampGroupStateFieldAsync(AllJoynMessageInfo info, string lampGroupID, string LampGroupStateFieldName, object LampGroupStateFieldValue, uint TransitionPeriod)
+        IAsyncOperation<LampGroupTransitionLampGroupStateFieldResult> ILampGroupService.TransitionLampGroupStateFieldAsync(AllJoynMessageInfo info, string lampGroupID, string lampGroupStateFieldName, object lampGroupStateFieldValue, uint transitionPeriod)
         {
-            //TODO
-            return Task.FromResult(LampGroupTransitionLampGroupStateFieldResult.CreateFailureResult(7)).AsAsyncOperation();
+            if (!LampGroups.ContainsKey(lampGroupID))
+                return Task.FromResult(LampGroupTransitionLampGroupStateFieldResult.CreateFailureResult(16)).AsAsyncOperation();
+
+            var lampService = (org.allseen.LSF.ControllerService.Lamp.ILampService)this;
+            foreach (var id in GetUniqueLampIds(lampGroupID))
+            {
+                var _ = lampService.TransitionLampStateFieldAsync(info, id, lampGroupStateFieldName, lampGroupStateFieldValue, transitionPeriod);
+            }
+            return Task.FromResult(LampGroupTransitionLampGroupStateFieldResult.CreateFailureResult(0)).AsAsyncOperation();
         }
 
-        IAsyncOperation<LampGroupTransitionLampGroupStateToPresetResult> ILampGroupService.TransitionLampGroupStateToPresetAsync(AllJoynMessageInfo info, string lampGroupID, string PresetID, uint TransitionPeriod)
+        IAsyncOperation<LampGroupTransitionLampGroupStateToPresetResult> ILampGroupService.TransitionLampGroupStateToPresetAsync(AllJoynMessageInfo info, string lampGroupID, string presetID, uint transitionPeriod)
         {
-            //TODO
-            return Task.FromResult(LampGroupTransitionLampGroupStateToPresetResult.CreateFailureResult(7)).AsAsyncOperation();
+            if (!LampGroups.ContainsKey(lampGroupID))
+                return Task.FromResult(LampGroupTransitionLampGroupStateToPresetResult.CreateFailureResult(16)).AsAsyncOperation();
+
+            var lampService = (org.allseen.LSF.ControllerService.Lamp.ILampService)this;
+            foreach (var id in GetUniqueLampIds(lampGroupID))
+            {
+                var _ = lampService.TransitionLampStateToPresetAsync(info, id, presetID, transitionPeriod);
+            }
+            return Task.FromResult(LampGroupTransitionLampGroupStateToPresetResult.CreateFailureResult(0)).AsAsyncOperation();
+        }
+
+        private IEnumerable<string> GetUniqueLampIds(string groupId)
+        {
+            Dictionary<string, object> device = new Dictionary<string, object>();
+            //Finds all unique lamp ids in groups recursively
+            //TODO: Avoid infinite recursion when group ids are circular
+            if (LampGroups.ContainsKey(groupId))
+            {
+                foreach (var id in LampGroups[groupId].LampIds)
+                {
+                    device[id] = null;
+                }
+                foreach (var gId in LampGroups[groupId].LampGroupIds)
+                {
+                    foreach (var lamp in GetUniqueLampIds(gId))
+                    {
+                        device[lamp] = null;
+                    }
+                }
+            }
+            return device.Keys;
         }
     }
 }

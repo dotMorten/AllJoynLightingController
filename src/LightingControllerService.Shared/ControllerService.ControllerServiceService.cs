@@ -3,6 +3,7 @@ using org.allseen.LSF.ControllerService;
 using Windows.Devices.AllJoyn;
 using Windows.Foundation;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace LightingControllerService
 {
@@ -20,7 +21,23 @@ namespace LightingControllerService
 
         IAsyncOperation<ControllerServiceLightingResetControllerServiceResult> IControllerServiceService.LightingResetControllerServiceAsync(AllJoynMessageInfo info)
         {
-            //TODO: Perform the reset
+            Presets.Clear();
+            SavePresets();
+            LampGroups.Clear();
+            SaveLampGroups();
+            DefaultState = new Dictionary<string, object>()
+            {
+              { "OnOff", true },
+              { "Saturation", (UInt32)0 },
+              { "Brightness", UInt32.MaxValue },
+              { "Hue", 0 },
+              { "ColorTemp", 2800 }
+            };
+            //TODO: Save DefaultState
+            Scenes.Clear();
+            SaveScenes();
+            MasterScenes.Clear();
+            SaveMasterScenes();
             return Task.FromResult(ControllerServiceLightingResetControllerServiceResult.CreateSuccessResult(0)).AsAsyncOperation();
         }
     }

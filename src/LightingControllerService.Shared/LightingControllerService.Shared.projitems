@@ -17,5 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ControllerService.LampService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControllerServiceHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControllerService.ControllerServiceService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LightingClientService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LightingDevice.cs" />
   </ItemGroup>
 </Project>

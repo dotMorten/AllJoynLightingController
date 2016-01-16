@@ -26,6 +26,7 @@ namespace LightingControllerService.TestApp
         {
             this.InitializeComponent();
             LightingControllerService.ControllerServiceHandler.Initialize();
+            var lights = LightingClientService.Lights;
         }
     }
 }
