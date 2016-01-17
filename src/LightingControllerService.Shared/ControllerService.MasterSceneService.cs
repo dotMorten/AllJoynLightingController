@@ -55,6 +55,7 @@ namespace LightingControllerService
                 StringBuilder sb = new StringBuilder();
                 foreach (var l in MasterSceneName)
                     sb.Append($"{l.Key}={l.Value}\t");
+                sb.AppendLine();
                 foreach (var l in Scenes)
                     sb.AppendLine(l);
                 return sb.ToString();

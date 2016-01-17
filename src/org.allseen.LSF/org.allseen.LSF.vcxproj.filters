@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>c18a797d-0ae9-4d69-84d1-d3e621fec9a0</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ControllerService">
+      <UniqueIdentifier>{dbc2d5dd-ba78-4348-be78-a30322daf8f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lamp">
+      <UniqueIdentifier>{b4fdcb5b-d3d3-4a7c-aecb-46e36b0b6168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LampGroup">
+      <UniqueIdentifier>{63caa917-12c6-4d92-9556-a013c6cf819d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MasterScene">
+      <UniqueIdentifier>{360c9f81-5cdb-4654-946a-d9a81dfacbbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{a01b209c-65de-4624-9c12-63c44655f40a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Preset">
+      <UniqueIdentifier>{c94fbda9-83b6-40f4-8193-e79fa5548f72}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="AllJoynBusObjectManager.cpp" />
+    <ClCompile Include="AllJoynHelpers.cpp" />
+    <ClCompile Include="TypeConversionHelpers.cpp" />
+    <ClCompile Include="ControllerService\ControllerServiceConsumer.cpp">
+      <Filter>ControllerService</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerService\ControllerServiceProducer.cpp">
+      <Filter>ControllerService</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerService\ControllerServiceServiceEventAdapter.cpp">
+      <Filter>ControllerService</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerService\ControllerServiceServiceEventArgs.cpp">
+      <Filter>ControllerService</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerService\ControllerServiceSignals.cpp">
+      <Filter>ControllerService</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerService\ControllerServiceWatcher.cpp">
+      <Filter>ControllerService</Filter>
+    </ClCompile>
+    <ClCompile Include="Lamp\LampConsumer.cpp">
+      <Filter>Lamp</Filter>
+    </ClCompile>
+    <ClCompile Include="Lamp\LampProducer.cpp">
+      <Filter>Lamp</Filter>
+    </ClCompile>
+    <ClCompile Include="Lamp\LampServiceEventAdapter.cpp">
+      <Filter>Lamp</Filter>
+    </ClCompile>
+    <ClCompile Include="Lamp\LampServiceEventArgs.cpp">
+      <Filter>Lamp</Filter>
+    </ClCompile>
+    <ClCompile Include="Lamp\LampSignals.cpp">
+      <Filter>Lamp</Filter>
+    </ClCompile>
+    <ClCompile Include="Lamp\LampWatcher.cpp">
+      <Filter>Lamp</Filter>
+    </ClCompile>
+    <ClCompile Include="LampGroup\LampGroupConsumer.cpp">
+      <Filter>LampGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="LampGroup\LampGroupProducer.cpp">
+      <Filter>LampGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="LampGroup\LampGroupServiceEventAdapter.cpp">
+      <Filter>LampGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="LampGroup\LampGroupServiceEventArgs.cpp">
+      <Filter>LampGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="LampGroup\LampGroupSignals.cpp">
+      <Filter>LampGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="LampGroup\LampGroupWatcher.cpp">
+      <Filter>LampGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="MasterScene\MasterSceneConsumer.cpp">
+      <Filter>MasterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MasterScene\MasterSceneProducer.cpp">
+      <Filter>MasterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MasterScene\MasterSceneServiceEventAdapter.cpp">
+      <Filter>MasterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MasterScene\MasterSceneServiceEventArgs.cpp">
+      <Filter>MasterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MasterScene\MasterSceneSignals.cpp">
+      <Filter>MasterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MasterScene\MasterSceneWatcher.cpp">
+      <Filter>MasterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Preset\PresetConsumer.cpp">
+      <Filter>Preset</Filter>
+    </ClCompile>
+    <ClCompile Include="Preset\PresetProducer.cpp">
+      <Filter>Preset</Filter>
+    </ClCompile>
+    <ClCompile Include="Preset\PresetServiceEventAdapter.cpp">
+      <Filter>Preset</Filter>
+    </ClCompile>
+    <ClCompile Include="Preset\PresetServiceEventArgs.cpp">
+      <Filter>Preset</Filter>
+    </ClCompile>
+    <ClCompile Include="Preset\PresetSignals.cpp">
+      <Filter>Preset</Filter>
+    </ClCompile>
+    <ClCompile Include="Preset\PresetWatcher.cpp">
+      <Filter>Preset</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneConsumer.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneProducer.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneServiceEventAdapter.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneServiceEventArgs.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneSignals.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneWatcher.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="AllJoynBusObjectManager.h" />
+    <ClInclude Include="AllJoynHelpers.h" />
+    <ClInclude Include="TypeConversionHelpers.h" />
+    <ClInclude Include="ControllerService\ControllerServiceConsumer.h">
+      <Filter>ControllerService</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerService\ControllerServiceEventArgs.h">
+      <Filter>ControllerService</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerService\ControllerServiceMethodResults.h">
+      <Filter>ControllerService</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerService\ControllerServiceProducer.h">
+      <Filter>ControllerService</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerService\ControllerServiceServiceEventAdapter.h">
+      <Filter>ControllerService</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerService\ControllerServiceServiceEventArgs.h">
+      <Filter>ControllerService</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerService\ControllerServiceSignals.h">
+      <Filter>ControllerService</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerService\ControllerServiceWatcher.h">
+      <Filter>ControllerService</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerService\IControllerServiceService.h">
+      <Filter>ControllerService</Filter>
+    </ClInclude>
+    <ClInclude Include="Structures.h" />
+    <ClInclude Include="Lamp\ILampService.h">
+      <Filter>Lamp</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp\LampConsumer.h">
+      <Filter>Lamp</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp\LampEventArgs.h">
+      <Filter>Lamp</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp\LampMethodResults.h">
+      <Filter>Lamp</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp\LampProducer.h">
+      <Filter>Lamp</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp\LampServiceEventAdapter.h">
+      <Filter>Lamp</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp\LampServiceEventArgs.h">
+      <Filter>Lamp</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp\LampSignals.h">
+      <Filter>Lamp</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp\LampWatcher.h">
+      <Filter>Lamp</Filter>
+    </ClInclude>
+    <ClInclude Include="LampGroup\ILampGroupService.h">
+      <Filter>LampGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="LampGroup\LampGroupConsumer.h">
+      <Filter>LampGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="LampGroup\LampGroupEventArgs.h">
+      <Filter>LampGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="LampGroup\LampGroupMethodResults.h">
+      <Filter>LampGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="LampGroup\LampGroupProducer.h">
+      <Filter>LampGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="LampGroup\LampGroupServiceEventAdapter.h">
+      <Filter>LampGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="LampGroup\LampGroupServiceEventArgs.h">
+      <Filter>LampGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="LampGroup\LampGroupSignals.h">
+      <Filter>LampGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="LampGroup\LampGroupWatcher.h">
+      <Filter>LampGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterScene\IMasterSceneService.h">
+      <Filter>MasterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterScene\MasterSceneConsumer.h">
+      <Filter>MasterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterScene\MasterSceneEventArgs.h">
+      <Filter>MasterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterScene\MasterSceneMethodResults.h">
+      <Filter>MasterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterScene\MasterSceneProducer.h">
+      <Filter>MasterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterScene\MasterSceneServiceEventAdapter.h">
+      <Filter>MasterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterScene\MasterSceneServiceEventArgs.h">
+      <Filter>MasterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterScene\MasterSceneSignals.h">
+      <Filter>MasterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterScene\MasterSceneWatcher.h">
+      <Filter>MasterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Preset\IPresetService.h">
+      <Filter>Preset</Filter>
+    </ClInclude>
+    <ClInclude Include="Preset\PresetConsumer.h">
+      <Filter>Preset</Filter>
+    </ClInclude>
+    <ClInclude Include="Preset\PresetEventArgs.h">
+      <Filter>Preset</Filter>
+    </ClInclude>
+    <ClInclude Include="Preset\PresetMethodResults.h">
+      <Filter>Preset</Filter>
+    </ClInclude>
+    <ClInclude Include="Preset\PresetProducer.h">
+      <Filter>Preset</Filter>
+    </ClInclude>
+    <ClInclude Include="Preset\PresetServiceEventAdapter.h">
+      <Filter>Preset</Filter>
+    </ClInclude>
+    <ClInclude Include="Preset\PresetServiceEventArgs.h">
+      <Filter>Preset</Filter>
+    </ClInclude>
+    <ClInclude Include="Preset\PresetSignals.h">
+      <Filter>Preset</Filter>
+    </ClInclude>
+    <ClInclude Include="Preset\PresetWatcher.h">
+      <Filter>Preset</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ISceneService.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneConsumer.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneEventArgs.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneMethodResults.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneProducer.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneServiceEventAdapter.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneServiceEventArgs.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneSignals.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneWatcher.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

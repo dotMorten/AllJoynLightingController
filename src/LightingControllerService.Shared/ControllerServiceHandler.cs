@@ -13,10 +13,10 @@ namespace LightingControllerService
         {
             bus = new Windows.Devices.AllJoyn.AllJoynBusAttachment();
 
-            bus.AboutData.DefaultAppName = "AllJoyn Lighting Service Controller";
+            bus.AboutData.DefaultAppName = "Lighting Controller Service";
             bus.AboutData.DefaultManufacturer = "Morten Nielsen";
-            bus.AboutData.DefaultDescription = "Lighting Service for AllJoyn";
-            bus.AboutData.ModelNumber = "Model Number here";
+            bus.AboutData.DefaultDescription = "Lighting Controller Service for AllJoyn";
+            bus.AboutData.ModelNumber = "Controller 1.0";
             service = new ControllerService(bus);
 
             service.Start();
