@@ -7,8 +7,8 @@
     <ProjectGuid>{183F265E-CF51-4D6C-AE10-34644CA42238}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LightingControllerService.TestApp</RootNamespace>
-    <AssemblyName>LightingControllerService.TestApp</AssemblyName>
+    <RootNamespace>LightingControllerService.HeadedService</RootNamespace>
+    <AssemblyName>LightingControllerService.HeadedService</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>

@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightingControllerService", "LightingControllerService\LightingControllerService.csproj", "{C53A8612-9FE4-4F03-B6E2-611C1247BB25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightingControllerService.HeadlessService", "LightingControllerService\LightingControllerService.HeadlessService.csproj", "{C53A8612-9FE4-4F03-B6E2-611C1247BB25}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AllJoyn", "AllJoyn", "{B0C43B6B-FF04-4E29-8F8E-2A948F2EB411}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LightingControllerService.Shared", "LightingControllerService.Shared\LightingControllerService.Shared.shproj", "{8BC746EC-9FD8-4955-8B71-2E0E56860FA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightingControllerService.TestApp", "LightingControllerService.TestApp\LightingControllerService.TestApp.csproj", "{183F265E-CF51-4D6C-AE10-34644CA42238}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightingControllerService.HeadedService", "LightingControllerService.HeadedService\LightingControllerService.HeadedService.csproj", "{183F265E-CF51-4D6C-AE10-34644CA42238}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "org.allseen.LSF", "org.allseen.LSF\org.allseen.LSF.vcxproj", "{0D52F361-0DDF-4259-8DAF-0B6DEEFC5C9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{4A464B36-8F24-4E6A-9675-1B57FDBFA654}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientApp", "ClientApp", "{FDD03A50-22F2-4F01-AF19-1C70E9F5EB5C}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -81,6 +85,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{C53A8612-9FE4-4F03-B6E2-611C1247BB25} = {4A464B36-8F24-4E6A-9675-1B57FDBFA654}
+		{8BC746EC-9FD8-4955-8B71-2E0E56860FA2} = {4A464B36-8F24-4E6A-9675-1B57FDBFA654}
+		{183F265E-CF51-4D6C-AE10-34644CA42238} = {4A464B36-8F24-4E6A-9675-1B57FDBFA654}
 		{0D52F361-0DDF-4259-8DAF-0B6DEEFC5C9E} = {B0C43B6B-FF04-4E29-8F8E-2A948F2EB411}
 	EndGlobalSection
 EndGlobal
