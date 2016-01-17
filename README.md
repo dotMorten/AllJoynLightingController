@@ -1,4 +1,4 @@
-# AllJoynLightingController
+# AllJoyn Lighting Service Controller
 
 A Windows Universal App implementation of the AllJoyn Lighting Service Framework Controller for running on Windows 10 Iot Core.
 
