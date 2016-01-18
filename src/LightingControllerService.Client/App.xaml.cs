@@ -74,9 +74,11 @@ namespace LightingControllerService.Client
                 // parameter
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
+            Client = new ClientManager(rootFrame.Dispatcher);
             // Ensure the current window is active
             Window.Current.Activate();
         }
+        public static ClientManager Client { get; private set; }
 
         /// <summary>
         /// Invoked when Navigation to a certain page fails

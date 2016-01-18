@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="LightingControllerService.Client.Views.LampsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LightingControllerService.Client.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<!--<ItemsControl ItemsSource="{x:Bind ServiceClient.Services, Mode=OneWay}" >
+			<ItemsControl.ItemTemplate>
+				<DataTemplate x:DataType="local:ServiceManager">
+					<ItemsControl ItemsSource="{x:Bind Value.Lamps, Mode=OneWay}">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate x:DataType="local:Lamp">
+								<TextBlock Text="{x:Bind Name}" />
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>-->
+
+		<ListView ItemsSource="{x:Bind ServiceClient.Services, Mode=OneWay}" >
+			<ListView.ItemTemplate>
+				<DataTemplate >
+					<Border BorderBrush="Blue" BorderThickness="1" Margin="2">
+						<ListView ItemsSource="{Binding Value.Lamps}">
+							<ListView.ItemTemplate>
+								<DataTemplate >
+									<Border BorderBrush="Black" BorderThickness="1" Margin="2">
+										<TextBlock Text="{Binding Value.Name}" />
+									</Border>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
+					</Border>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+
+
+	</Grid>
+</Page>

@@ -19,18 +19,17 @@ namespace LightingControllerService
         {
             LampProducer.Signals.LampsFound(new List<string>() { e.DeviceId }.AsReadOnly());
         }
+
         private void LightingClientService_LampStateChanged(object sender, IReadOnlyDictionary<string,object> state)
         {
             var device = (LightingDevice)sender;
             LampProducer.Signals.LampStateChanged(device.DeviceId, state);
         }
-
-
-
+        
         IAsyncOperation<LampGetAllLampIDsResult> ILampService.GetAllLampIDsAsync(AllJoynMessageInfo info)
         {
             return Task.FromResult(
-               LampGetAllLampIDsResult.CreateSuccessResult(0, LightingClientService.Lights.Select(l => l.DeviceId).ToList())
+               LampGetAllLampIDsResult.CreateSuccessResult(0, LightingClientService.LightIds)
             ).AsAsyncOperation();
         }
 

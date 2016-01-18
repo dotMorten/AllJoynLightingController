@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,7 +26,10 @@ namespace LightingControllerService.Client
         public MainPage()
         {
             this.InitializeComponent();
-            DataContext = ClientManager.Services;
+        }
+        private void Lamps_Checked(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Views.LampsView));
         }
     }
 }

@@ -31,8 +31,17 @@ namespace LightingControllerService
                     return _Lights.Values.ToList();
             }
         }
-		
-		public static LightingDevice GetLightById(string deviceId)
+
+        public static IList<string> LightIds
+        {
+            get
+            {
+                lock (lockLights)
+                    return _Lights.Keys.ToList();
+            }
+        }
+
+        public static LightingDevice GetLightById(string deviceId)
 		{
 			lock (lockLights)
 			{
@@ -51,14 +60,14 @@ namespace LightingControllerService
                 if (_Lights.ContainsKey(id))
                 {
                     device = _Lights[id];
-                    device.LampStateChanged -= Light_LampStateChanged;
                     _Lights.Remove(id);
                 }
             }
             if(device != null)
             {
-                System.Diagnostics.Debug.WriteLine($"Light lost: {device.DeviceId} {device.DeviceName}");
+                device.LampStateChanged -= Light_LampStateChanged;
                 LampLost?.Invoke(null, device);
+                System.Diagnostics.Debug.WriteLine($"Light lost: {device.DeviceId} {device.DeviceName}");
             }
         }
 
@@ -84,7 +93,9 @@ namespace LightingControllerService
         }
 
         public static event EventHandler<LightingDevice> LampFound;
+
         public static event EventHandler<LightingDevice> LampLost;
+
         public static event EventHandler<IReadOnlyDictionary<string, object>> LampStateChanged;
     }
 }

@@ -6,8 +6,122 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+	<Page.Resources>
+		<Style x:Key="SidePaneRadioButtonStyle" TargetType="RadioButton">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Padding" Value="8,2,0,2"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="HorizontalContentAlignment" Value="Left"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+			<Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+			<Setter Property="MinWidth" Value="120"/>
+			<Setter Property="UseSystemFocusVisuals" Value="True"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="RadioButton">
+						<Grid BorderBrush="{TemplateBinding BorderBrush}" 
+							  BorderThickness="{TemplateBinding BorderThickness}" 
+							  Background="{TemplateBinding Background}">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="PointerOver">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="checkedBackground">
+												<DiscreteObjectKeyFrame KeyTime="0" Value=".5"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="checkedBackground">
+												<DiscreteObjectKeyFrame KeyTime="0" Value=".5"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="CheckStates">
+									<VisualState x:Name="Checked">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="checkedBackground"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Unchecked"/>
+									<VisualState x:Name="Indeterminate"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Grid x:Name="checkedBackground" Background="#44FFFFFF" Opacity="0" />
+							<ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw"
+											  ContentTemplate="{TemplateBinding ContentTemplate}" 
+											  ContentTransitions="{TemplateBinding ContentTransitions}" 
+											  Content="{TemplateBinding Content}"
+											  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+											  Margin="{TemplateBinding Padding}" TextWrapping="Wrap" 
+											  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    </Grid>
+		<SplitView DisplayMode="Inline" IsPaneOpen="True" PaneBackground="CornflowerBlue" OpenPaneLength="200">
+			<SplitView.Pane>
+				<Grid Background="CornflowerBlue" RequestedTheme="Dark">
+					<StackPanel Margin="0,20">
+						<RadioButton GroupName="SidePane" 
+									 Checked="Lamps_Checked"
+									 Style="{StaticResource SidePaneRadioButtonStyle}" >
+							<StackPanel Orientation="Horizontal" Margin="0,10">
+								<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
+								<TextBlock Text="Lamps" FontWeight="Bold" />
+							</StackPanel>
+						</RadioButton>
+						<RadioButton GroupName="SidePane" IsChecked="True" Style="{StaticResource SidePaneRadioButtonStyle}" >
+							<StackPanel Orientation="Horizontal" Margin="0,10">
+							<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
+							<TextBlock Text="Groups" FontWeight="Bold" />
+						</StackPanel>
+						</RadioButton>
+						<RadioButton GroupName="SidePane" Style="{StaticResource SidePaneRadioButtonStyle}" >
+							<StackPanel Orientation="Horizontal" Margin="0,10">
+							<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
+							<TextBlock Text="Presets" FontWeight="Bold" />
+						</StackPanel>
+						</RadioButton>
+						<RadioButton GroupName="SidePane" Style="{StaticResource SidePaneRadioButtonStyle}" >
+							<StackPanel Orientation="Horizontal" Margin="0,10">
+							<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
+							<TextBlock Text="Scenes" FontWeight="Bold" />
+						</StackPanel>
+						</RadioButton>
+						<RadioButton GroupName="SidePane" Style="{StaticResource SidePaneRadioButtonStyle}" >
+							<StackPanel Orientation="Horizontal" Margin="0,10">
+							<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
+							<TextBlock Text="Master Scenes" FontWeight="Bold" />
+						</StackPanel>
+						</RadioButton>
+						<RadioButton GroupName="SidePane" Style="{StaticResource SidePaneRadioButtonStyle}" >
+							<StackPanel Orientation="Horizontal" Margin="0,10">
+								<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
+								<TextBlock Text="Settings" FontWeight="Bold" />
+							</StackPanel>
+						</RadioButton>
+					</StackPanel>
+				</Grid>
+			</SplitView.Pane>
+			<Frame x:Name="ContentFrame" />
+		</SplitView>
+	</Grid>
 </Page>
