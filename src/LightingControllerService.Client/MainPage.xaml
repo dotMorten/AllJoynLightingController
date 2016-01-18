@@ -88,31 +88,38 @@
 								<TextBlock Text="Lamps" FontWeight="Bold" />
 							</StackPanel>
 						</RadioButton>
-						<RadioButton GroupName="SidePane" IsChecked="True" Style="{StaticResource SidePaneRadioButtonStyle}" >
+						<RadioButton GroupName="SidePane"
+									 Checked="Groups_Checked"
+									 Style="{StaticResource SidePaneRadioButtonStyle}" >
 							<StackPanel Orientation="Horizontal" Margin="0,10">
 							<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
 							<TextBlock Text="Groups" FontWeight="Bold" />
 						</StackPanel>
 						</RadioButton>
-						<RadioButton GroupName="SidePane" Style="{StaticResource SidePaneRadioButtonStyle}" >
+						<RadioButton GroupName="SidePane"
+									 Checked="Presets_Checked"
+									 Style="{StaticResource SidePaneRadioButtonStyle}" >
 							<StackPanel Orientation="Horizontal" Margin="0,10">
 							<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
 							<TextBlock Text="Presets" FontWeight="Bold" />
 						</StackPanel>
 						</RadioButton>
-						<RadioButton GroupName="SidePane" Style="{StaticResource SidePaneRadioButtonStyle}" >
+						<RadioButton GroupName="SidePane"
+									 Checked="Scenes_Checked" Style="{StaticResource SidePaneRadioButtonStyle}" >
 							<StackPanel Orientation="Horizontal" Margin="0,10">
 							<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
 							<TextBlock Text="Scenes" FontWeight="Bold" />
 						</StackPanel>
 						</RadioButton>
-						<RadioButton GroupName="SidePane" Style="{StaticResource SidePaneRadioButtonStyle}" >
+						<RadioButton GroupName="SidePane"
+									 Checked="MasterScenes_Checked" Style="{StaticResource SidePaneRadioButtonStyle}" >
 							<StackPanel Orientation="Horizontal" Margin="0,10">
 							<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
 							<TextBlock Text="Master Scenes" FontWeight="Bold" />
 						</StackPanel>
 						</RadioButton>
-						<RadioButton GroupName="SidePane" Style="{StaticResource SidePaneRadioButtonStyle}" >
+						<RadioButton GroupName="SidePane"
+									 Checked="Settings_Checked" Style="{StaticResource SidePaneRadioButtonStyle}" >
 							<StackPanel Orientation="Horizontal" Margin="0,10">
 								<SymbolIcon Symbol="Setting" Margin="0,0,10,0" />
 								<TextBlock Text="Settings" FontWeight="Bold" />

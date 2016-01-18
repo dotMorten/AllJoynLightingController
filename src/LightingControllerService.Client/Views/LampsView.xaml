@@ -8,6 +8,13 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<TextBlock Text="Lamps" Style="{StaticResource SubheaderTextBlockStyle}" />
+
 		<!--<ItemsControl ItemsSource="{x:Bind ServiceClient.Services, Mode=OneWay}" >
 			<ItemsControl.ItemTemplate>
 				<DataTemplate x:DataType="local:ServiceManager">
@@ -23,7 +30,7 @@
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>-->
 
-		<ListView ItemsSource="{x:Bind ServiceClient.Services, Mode=OneWay}" >
+		<ListView ItemsSource="{x:Bind ServiceClient.Services, Mode=OneWay}" Grid.Row="1">
 			<ListView.ItemTemplate>
 				<DataTemplate >
 					<Border BorderBrush="Blue" BorderThickness="1" Margin="2">

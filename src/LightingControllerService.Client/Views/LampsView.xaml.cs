@@ -28,7 +28,7 @@ namespace LightingControllerService.Client.Views
             this.InitializeComponent();
             //ServiceClient.Services
             //ServiceClient.Services.MapChanged += Services_MapChanged;
-            ServiceClient = App.Client;
+            //ServiceClient = App.Client;
             Test();
         }
 

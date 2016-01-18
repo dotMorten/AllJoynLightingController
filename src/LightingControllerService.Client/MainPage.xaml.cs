@@ -31,5 +31,31 @@ namespace LightingControllerService.Client
         {
             ContentFrame.Navigate(typeof(Views.LampsView));
         }
+
+        private void Scenes_Checked(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Views.ScenesView));
+        }
+
+        private void Presets_Checked(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Views.PresetsView));
+        }
+
+        private void Groups_Checked(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Views.GroupsView));
+        }
+
+        private void MasterScenes_Checked(object sender, RoutedEventArgs e)
+        {
+            //ContentFrame.Navigate(typeof(Views.LampsView));
+        }
+
+        private void Settings_Checked(object sender, RoutedEventArgs e)
+        {
+            //ContentFrame.Navigate(typeof(Views.LampsView));
+        }
+
     }
 }
