@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LightingControllerService.Client.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,28 +27,13 @@ namespace LightingControllerService.Client.Views
         public LampsView()
         {
             this.InitializeComponent();
-            //ServiceClient.Services
-            //ServiceClient.Services.MapChanged += Services_MapChanged;
-            //ServiceClient = App.Client;
-            Test();
         }
+        public LampsViewModel ViewModel { get { return LampsViewModel.Current; } }
 
-        private void Services_MapChanged(IObservableMap<string, ServiceManager> sender, IMapChangedEventArgs<string> @event)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+            ViewModel.RefreshLamps();
         }
-
-        private void Services_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-        }
-
-        private async void Test()
-        {
-            DataContext = ServiceClient;
-            await Task.Delay(5000);
-            DataContext = null;
-            DataContext = ServiceClient;
-        }
-
-        public ClientManager ServiceClient { get; }
     }
 }

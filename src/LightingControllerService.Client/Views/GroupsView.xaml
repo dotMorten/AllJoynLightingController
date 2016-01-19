@@ -18,13 +18,20 @@
 
 		<StackPanel Grid.Row="1">
 			<StackPanel BorderBrush="Black" BorderThickness="1" Margin="20">
-				<TextBlock Text="Bedroom" />
+				<ListView x:Name="groupList" ItemsSource="{x:Bind ViewModel.Groups, Mode=OneWay}">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Value}" />
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+				<!--<TextBlock Text="Bedroom" />
 				<TextBlock Text="Office" />
 				<TextBlock Text="Living Room" />
 				<TextBlock Text="Hallway" />
 				<TextBlock Text="Upstairs" FontWeight="Bold" />
 				<TextBlock Text="Downstairs" />
-				<TextBlock Text="Outside" />
+				<TextBlock Text="Outside" />-->
 			</StackPanel>
 			<TextBlock Text="Upstairs:" FontWeight="Bold"/>
 			<StackPanel BorderBrush="Black" BorderThickness="1" Margin="20">

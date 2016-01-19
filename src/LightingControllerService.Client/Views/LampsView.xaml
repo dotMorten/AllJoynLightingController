@@ -30,19 +30,11 @@
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>-->
 
-		<ListView ItemsSource="{x:Bind ServiceClient.Services, Mode=OneWay}" Grid.Row="1">
+		<ListView ItemsSource="{x:Bind ViewModel.Lamps, Mode=OneWay}" Grid.Row="1">
 			<ListView.ItemTemplate>
 				<DataTemplate >
-					<Border BorderBrush="Blue" BorderThickness="1" Margin="2">
-						<ListView ItemsSource="{Binding Value.Lamps}">
-							<ListView.ItemTemplate>
-								<DataTemplate >
-									<Border BorderBrush="Black" BorderThickness="1" Margin="2">
-										<TextBlock Text="{Binding Value.Name}" />
-									</Border>
-								</DataTemplate>
-							</ListView.ItemTemplate>
-						</ListView>
+					<Border BorderBrush="Black" BorderThickness="1" Margin="2">
+						<TextBlock Text="{Binding Name}" />
 					</Border>
 				</DataTemplate>
 			</ListView.ItemTemplate>

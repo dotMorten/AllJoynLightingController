@@ -33,8 +33,6 @@
 				<TextBox Header="Color Temperature" Text="2800K" />
 				<Button Content="Apply" />
 			</StackPanel>
-			<TextBlock TextWrapping="Wrap">Clear all groups, scenes, presets and default lamp state.</TextBlock>
-			<Button Content="Reset" />
 		</StackPanel>
 		
 	</Grid>

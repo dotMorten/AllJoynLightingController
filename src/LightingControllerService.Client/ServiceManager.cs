@@ -95,5 +95,25 @@ namespace LightingControllerService.Client
         {
             preset = consumer;
         }
+
+        public async Task<Dictionary<string,string>> GetGroupsAsync()
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            if (lampGroup != null)
+            {
+                var ids = await lampGroup.GetAllLampGroupIDsAsync();
+                foreach (var id in ids.LampGroupIDs)
+                {
+                    var name = await lampGroup.GetLampGroupNameAsync(id, "en");
+                    result[id] = name.LampGroupName;
+                }
+            }
+            return result;
+        }
+        public IList<Lamp> GetLamps()
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            return Lamps.Values.ToList();
+        }
     }
 }
