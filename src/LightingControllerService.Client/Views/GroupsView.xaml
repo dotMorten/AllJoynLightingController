@@ -14,5 +14,29 @@
 		</Grid.RowDefinitions>
 
 		<TextBlock Text="Groups" Style="{StaticResource SubheaderTextBlockStyle}" />
+
+
+		<StackPanel Grid.Row="1">
+			<StackPanel BorderBrush="Black" BorderThickness="1" Margin="20">
+				<TextBlock Text="Bedroom" />
+				<TextBlock Text="Office" />
+				<TextBlock Text="Living Room" />
+				<TextBlock Text="Hallway" />
+				<TextBlock Text="Upstairs" FontWeight="Bold" />
+				<TextBlock Text="Downstairs" />
+				<TextBlock Text="Outside" />
+			</StackPanel>
+			<TextBlock Text="Upstairs:" FontWeight="Bold"/>
+			<StackPanel BorderBrush="Black" BorderThickness="1" Margin="20">
+				<TextBlock Text="Bedroom (Group)" />
+				<TextBlock Text="Office (Group)" />
+				<TextBlock Text="Playroom (Lamp)" />
+				<StackPanel Orientation="Horizontal">
+					<Button Content="Add Lamp" />
+					<Button Content="Add Group" />
+					<Button Content="Apply" IsEnabled="False" />
+				</StackPanel>
+			</StackPanel>
+		</StackPanel>
 	</Grid>
 </Page>

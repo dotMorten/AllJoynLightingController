@@ -15,5 +15,27 @@
 
 		<TextBlock Text="Presets" Style="{StaticResource SubheaderTextBlockStyle}" />
 
+		<StackPanel Grid.Row="1">
+			<TextBlock Text="Presets" />
+			<StackPanel BorderBrush="Black" BorderThickness="1" Margin="20">
+				<TextBlock Text="Default" />
+				<TextBlock Text="Evening" />
+				<TextBlock Text="Daytime" />
+				<TextBlock Text="Nightlight" />
+				<TextBlock Text="All Red" />
+			</StackPanel>
+			<StackPanel BorderBrush="Black" BorderThickness="1" Margin="20">
+				<TextBlock Text="Default Lamp State:" FontWeight="Bold"/>
+				<ToggleSwitch Header="On/Off" />
+				<TextBox Header="Brightness" Text="100%" />
+				<TextBox Header="Saturation" Text="0%" />
+				<TextBox Header="Hue" Text="Red" />
+				<TextBox Header="Color Temperature" Text="2800K" />
+				<Button Content="Apply" />
+			</StackPanel>
+			<TextBlock TextWrapping="Wrap">Clear all groups, scenes, presets and default lamp state.</TextBlock>
+			<Button Content="Reset" />
+		</StackPanel>
+		
 	</Grid>
 </Page>

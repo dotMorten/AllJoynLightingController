@@ -49,12 +49,12 @@ namespace LightingControllerService.Client
 
         private void MasterScenes_Checked(object sender, RoutedEventArgs e)
         {
-            //ContentFrame.Navigate(typeof(Views.LampsView));
+            ContentFrame.Navigate(typeof(Views.MasterScenesView));
         }
 
         private void Settings_Checked(object sender, RoutedEventArgs e)
         {
-            //ContentFrame.Navigate(typeof(Views.LampsView));
+            ContentFrame.Navigate(typeof(Views.SettingsView));
         }
 
     }
