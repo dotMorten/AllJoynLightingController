@@ -8,7 +8,7 @@ namespace LightingControllerService
 {
     internal partial class ControllerService
     {
-        private const uint InterfaceVersion = 1416;
+        private const uint InterfaceVersion = 1;
         private AllJoynBusAttachment bus;
 
         public ControllerService(AllJoynBusAttachment bus)
