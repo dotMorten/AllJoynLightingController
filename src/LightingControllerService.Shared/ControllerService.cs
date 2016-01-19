@@ -21,6 +21,7 @@ namespace LightingControllerService
             LoadMasterScenes();
             MasterSceneProducer = new org.allseen.LSF.ControllerService.MasterScene.MasterSceneProducer(bus) { Service = this };
             LoadPresets();
+            LoadDefaultLampState();
             PresetProducer = new org.allseen.LSF.ControllerService.Preset.PresetProducer(bus) { Service = this };
             SceneProducer = new org.allseen.LSF.ControllerService.Scene.SceneProducer(bus) { Service = this };
         }

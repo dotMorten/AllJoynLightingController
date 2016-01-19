@@ -25,7 +25,7 @@ namespace LightingControllerService
             SavePresets();
             LampGroups.Clear();
             SaveLampGroups();
-            DefaultState = new Dictionary<string, object>()
+            DefaultLampState = new Dictionary<string, object>()
             {
               { "OnOff", true },
               { "Saturation", (UInt32)0 },
@@ -33,7 +33,7 @@ namespace LightingControllerService
               { "Hue", 0 },
               { "ColorTemp", 2800 }
             };
-            //TODO: Save DefaultState
+            SaveDefaultLampState();
             Scenes.Clear();
             SaveScenes();
             MasterScenes.Clear();
