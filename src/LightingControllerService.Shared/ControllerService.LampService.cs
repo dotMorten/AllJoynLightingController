@@ -158,7 +158,7 @@ namespace LightingControllerService
             var light = LightingClientService.GetLightById(lampID);
             if (light == null)
                 return Task.FromResult(LampResetLampStateResult.CreateFailureResult(16)).AsAsyncOperation();
-            return light.TransitionLampStateAsync(DefaultState, 200).ContinueWith(r =>
+            return light.TransitionLampStateAsync(DefaultLampState, 200).ContinueWith(r =>
             {
                 if (r.Result.Status > 0)
                     return LampResetLampStateResult.CreateFailureResult(r.Result.Status);
@@ -171,9 +171,9 @@ namespace LightingControllerService
             var light = LightingClientService.GetLightById(lampID);
             if (light == null)
                 return Task.FromResult(LampResetLampStateFieldResult.CreateFailureResult(16)).AsAsyncOperation();
-            if (DefaultState.ContainsKey(LampStateFieldName))
+            if (DefaultLampState.ContainsKey(LampStateFieldName))
                 return Task.FromResult(LampResetLampStateFieldResult.CreateSuccessResult(0, lampID, LampStateFieldName)).AsAsyncOperation();
-            Dictionary<string, object> state = new Dictionary<string, object>() { { LampStateFieldName, DefaultState[LampStateFieldName] } };
+            Dictionary<string, object> state = new Dictionary<string, object>() { { LampStateFieldName, DefaultLampState[LampStateFieldName] } };
             return light.TransitionLampStateAsync(state, 200).ContinueWith(r =>
             {
                 if (r.Result.Status > 0)

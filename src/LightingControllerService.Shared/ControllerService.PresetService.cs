@@ -12,7 +12,7 @@ namespace LightingControllerService
 {
     internal partial class ControllerService : IPresetService
     {
-        public Dictionary<string, object> DefaultState { get; set; } = new Dictionary<string, object>()
+        public Dictionary<string, object> DefaultLampState { get; set; } = new Dictionary<string, object>()
         {
             //TODO: Load from disk
           { "OnOff", true },
@@ -22,6 +22,7 @@ namespace LightingControllerService
           { "ColorTemp", 2800 }
         };
         private Dictionary<string, Preset> Presets = new Dictionary<string, Preset>();
+
         private void SavePresets()
         {
             var container = Windows.Storage.ApplicationData.Current.LocalSettings.CreateContainer("Presets", Windows.Storage.ApplicationDataCreateDisposition.Always);
@@ -31,12 +32,28 @@ namespace LightingControllerService
                 container.Values[preset.Key] = preset.Value.Serialize();
             }
         }
+
+        private void SaveDefaultLampState()
+        {
+            var container = Windows.Storage.ApplicationData.Current.LocalSettings.CreateContainer("Presets", Windows.Storage.ApplicationDataCreateDisposition.Always);
+            container.Values["DEFAULT_LAMP_STATE"] = new Preset("Default", "en", DefaultLampState).Serialize();
+        }
+
         private void LoadPresets()
         {
             var container = Windows.Storage.ApplicationData.Current.LocalSettings.CreateContainer("Presets", Windows.Storage.ApplicationDataCreateDisposition.Always);
             foreach (var preset in container.Values)
             {
                 Presets[preset.Key] = Preset.FromString((string)preset.Value);
+            }
+        }
+
+        private void LoadDefaultLampState()
+        {
+            var container = Windows.Storage.ApplicationData.Current.LocalSettings.CreateContainer("Presets", Windows.Storage.ApplicationDataCreateDisposition.Always);
+            if (container.Values.ContainsKey("DEFAULT_LAMP_STATE"))
+            {
+                DefaultLampState = Preset.FromString((string)container.Values["DEFAULT_STATE"]).State;
             }
         }
 
@@ -126,7 +143,7 @@ namespace LightingControllerService
 
         IAsyncOperation<PresetGetDefaultLampStateResult> IPresetService.GetDefaultLampStateAsync(AllJoynMessageInfo info)
         {
-            return Task.FromResult(PresetGetDefaultLampStateResult.CreateSuccessResult(0, DefaultState)).AsAsyncOperation();
+            return Task.FromResult(PresetGetDefaultLampStateResult.CreateSuccessResult(0, DefaultLampState)).AsAsyncOperation();
         }
 
         IAsyncOperation<PresetGetPresetResult> IPresetService.GetPresetAsync(AllJoynMessageInfo info, string PresetID)
@@ -158,8 +175,8 @@ namespace LightingControllerService
             var props = new Dictionary<string, object>();
             foreach (var prop in LampState)
                 props[prop.Key] = prop.Value;
-            DefaultState = props;
-            //TODO: Save DefaultState to settings
+            DefaultLampState = props;
+            SaveDefaultLampState();
             return Task.FromResult(PresetSetDefaultLampStateResult.CreateSuccessResult(0)).AsAsyncOperation();
         }
 
