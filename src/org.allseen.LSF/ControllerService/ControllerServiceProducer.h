@@ -5,18 +5,7 @@
 //   Changes to this file may cause incorrect behavior and will be lost if  
 //   the code is regenerated.
 //
-//   Tool: AllJoynCodeGenerator.exe
-//
-//   This tool is located in the Windows 10 SDK and the Windows 10 AllJoyn 
-//   Visual Studio Extension in the Visual Studio Gallery.  
-//
-//   The generated code should be packaged in a Windows 10 C++/CX Runtime  
-//   Component which can be consumed in any UWP-supported language using 
-//   APIs that are available in Windows.Devices.AllJoyn.
-//
-//   Using AllJoynCodeGenerator - Invoke the following command with a valid 
-//   Introspection XML file and a writable output directory:
-//     AllJoynCodeGenerator -i <INPUT XML FILE> -o <OUTPUT DIRECTORY>
+//   For more information, see: http://go.microsoft.com/fwlink/?LinkID=623246
 // </auto-generated>
 //-----------------------------------------------------------------------------
 #pragma once
@@ -49,9 +38,9 @@ public:
     }
 
     // Used to send signals or register functions to handle received signals.
-    property ControllerServiceSignals^ Signals
+    property ControllerServiceLegacySignals^ Signals
     {
-        ControllerServiceSignals^ get() { return m_signals; }
+        ControllerServiceLegacySignals^ get() { return m_signals; }
     }
     
     // This event will fire whenever this producer is stopped.
@@ -220,7 +209,7 @@ private:
     
     Windows::Devices::AllJoyn::AllJoynBusAttachment^ m_busAttachment;
     Windows::Foundation::EventRegistrationToken m_busAttachmentStateChangedToken;
-    ControllerServiceSignals^ m_signals;
+    ControllerServiceLegacySignals^ m_signals;
     IControllerServiceService^ m_serviceInterface;
     Platform::String^ m_ServiceObjectPath;
 

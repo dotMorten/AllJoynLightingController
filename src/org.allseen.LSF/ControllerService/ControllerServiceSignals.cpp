@@ -5,18 +5,7 @@
 //   Changes to this file may cause incorrect behavior and will be lost if  
 //   the code is regenerated.
 //
-//   Tool: AllJoynCodeGenerator.exe
-//
-//   This tool is located in the Windows 10 SDK and the Windows 10 AllJoyn 
-//   Visual Studio Extension in the Visual Studio Gallery.  
-//
-//   The generated code should be packaged in a Windows 10 C++/CX Runtime  
-//   Component which can be consumed in any UWP-supported language using 
-//   APIs that are available in Windows.Devices.AllJoyn.
-//
-//   Using AllJoynCodeGenerator - Invoke the following command with a valid 
-//   Introspection XML file and a writable output directory:
-//     AllJoynCodeGenerator -i <INPUT XML FILE> -o <OUTPUT DIRECTORY>
+//   For more information, see: http://go.microsoft.com/fwlink/?LinkID=623246
 // </auto-generated>
 //-----------------------------------------------------------------------------
 #include "pch.h"
@@ -27,18 +16,17 @@ using namespace Windows::Devices::AllJoyn;
 using namespace Windows::Foundation;
 using namespace org::allseen::LSF::ControllerService;
 
-void ControllerServiceSignals::Initialize(_In_ alljoyn_busobject busObject, _In_ alljoyn_sessionid sessionId)
+void ControllerServiceSignals::Initialize(_In_ org::allseen::LSF::ISignalEmitter^ emitter)
 {
-    m_busObject = busObject;
-    m_sessionId = sessionId;
-
-    auto interfaceDefinition = alljoyn_busattachment_getinterface(alljoyn_busobject_getbusattachment(busObject), "org.allseen.LSF.ControllerService");
+    m_emitter = emitter;
+    alljoyn_busattachment nativeBusAttachment = AllJoynHelpers::GetInternalBusAttachment(m_emitter->BusObject->BusAttachment);
+    auto interfaceDefinition = alljoyn_busattachment_getinterface(nativeBusAttachment, "org.allseen.LSF.ControllerService");
     alljoyn_interfacedescription_getmember(interfaceDefinition, "ControllerServiceLightingReset", &m_memberControllerServiceLightingReset);
 }
 
 void ControllerServiceSignals::ControllerServiceLightingReset()
 {
-    if (nullptr == m_busObject)
+    if (nullptr == AllJoynHelpers::GetInternalBusObject(m_emitter->BusObject))
     {
         return;
     }
@@ -47,9 +35,9 @@ void ControllerServiceSignals::ControllerServiceLightingReset()
     alljoyn_msgarg arguments = alljoyn_msgarg_array_create(argCount);
     
     alljoyn_busobject_signal(
-        m_busObject, 
+        AllJoynHelpers::GetInternalBusObject(m_emitter->BusObject), 
         NULL,  // Generated code only supports broadcast signals.
-        m_sessionId,
+        m_emitter->Session->Id,
         m_memberControllerServiceLightingReset,
         arguments,
         argCount, 

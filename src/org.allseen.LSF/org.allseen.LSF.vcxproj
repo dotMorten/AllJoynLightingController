@@ -35,8 +35,8 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
     <ApplicationType>Windows Store</ApplicationType>
-    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformMinVersion>10.0.10240.0</WindowsTargetPlatformMinVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.14393.0</WindowsTargetPlatformMinVersion>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -217,6 +217,7 @@
     <ClInclude Include="AllJoynHelpers.h" />
     <ClInclude Include="ControllerService\ControllerServiceConsumer.h" />
     <ClInclude Include="ControllerService\ControllerServiceEventArgs.h" />
+    <ClInclude Include="ControllerService\ControllerServiceLegacySignals.h" />
     <ClInclude Include="ControllerService\ControllerServiceMethodResults.h" />
     <ClInclude Include="ControllerService\ControllerServiceProducer.h" />
     <ClInclude Include="ControllerService\ControllerServiceServiceEventAdapter.h" />
@@ -225,50 +226,49 @@
     <ClInclude Include="LampGroup\ILampGroupService.h" />
     <ClInclude Include="LampGroup\LampGroupConsumer.h" />
     <ClInclude Include="LampGroup\LampGroupEventArgs.h" />
+    <ClInclude Include="LampGroup\LampGroupLegacySignals.h" />
     <ClInclude Include="LampGroup\LampGroupMethodResults.h" />
     <ClInclude Include="LampGroup\LampGroupProducer.h" />
     <ClInclude Include="LampGroup\LampGroupServiceEventAdapter.h" />
     <ClInclude Include="LampGroup\LampGroupServiceEventArgs.h" />
     <ClInclude Include="LampGroup\LampGroupSignals.h" />
-    <ClInclude Include="LampGroup\LampGroupWatcher.h" />
     <ClInclude Include="Lamp\ILampService.h" />
     <ClInclude Include="Lamp\LampConsumer.h" />
     <ClInclude Include="Lamp\LampEventArgs.h" />
+    <ClInclude Include="Lamp\LampLegacySignals.h" />
     <ClInclude Include="Lamp\LampMethodResults.h" />
     <ClInclude Include="Lamp\LampProducer.h" />
     <ClInclude Include="Lamp\LampServiceEventAdapter.h" />
     <ClInclude Include="Lamp\LampServiceEventArgs.h" />
     <ClInclude Include="Lamp\LampSignals.h" />
-    <ClInclude Include="Lamp\LampWatcher.h" />
     <ClInclude Include="MasterScene\IMasterSceneService.h" />
     <ClInclude Include="MasterScene\MasterSceneConsumer.h" />
     <ClInclude Include="MasterScene\MasterSceneEventArgs.h" />
+    <ClInclude Include="MasterScene\MasterSceneLegacySignals.h" />
     <ClInclude Include="MasterScene\MasterSceneMethodResults.h" />
     <ClInclude Include="MasterScene\MasterSceneProducer.h" />
     <ClInclude Include="MasterScene\MasterSceneServiceEventAdapter.h" />
     <ClInclude Include="MasterScene\MasterSceneServiceEventArgs.h" />
     <ClInclude Include="MasterScene\MasterSceneSignals.h" />
-    <ClInclude Include="MasterScene\MasterSceneWatcher.h" />
     <ClInclude Include="Preset\IPresetService.h" />
     <ClInclude Include="Preset\PresetConsumer.h" />
     <ClInclude Include="Preset\PresetEventArgs.h" />
+    <ClInclude Include="Preset\PresetLegacySignals.h" />
     <ClInclude Include="Preset\PresetMethodResults.h" />
     <ClInclude Include="Preset\PresetProducer.h" />
     <ClInclude Include="Preset\PresetServiceEventAdapter.h" />
     <ClInclude Include="Preset\PresetServiceEventArgs.h" />
     <ClInclude Include="Preset\PresetSignals.h" />
-    <ClInclude Include="Preset\PresetWatcher.h" />
     <ClInclude Include="Scene\ISceneService.h" />
     <ClInclude Include="Scene\SceneConsumer.h" />
     <ClInclude Include="Scene\SceneEventArgs.h" />
+    <ClInclude Include="Scene\SceneLegacySignals.h" />
     <ClInclude Include="Scene\SceneMethodResults.h" />
     <ClInclude Include="Scene\SceneProducer.h" />
     <ClInclude Include="Scene\SceneServiceEventAdapter.h" />
     <ClInclude Include="Scene\SceneServiceEventArgs.h" />
     <ClInclude Include="Scene\SceneSignals.h" />
-    <ClInclude Include="Scene\SceneWatcher.h" />
     <ClInclude Include="Structures.h" />
-    <ClInclude Include="ControllerService\ControllerServiceWatcher.h" />
     <ClInclude Include="ControllerService\IControllerServiceService.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="TypeConversionHelpers.h" />
@@ -277,29 +277,29 @@
     <ClCompile Include="AllJoynBusObjectManager.cpp" />
     <ClCompile Include="AllJoynHelpers.cpp" />
     <ClCompile Include="ControllerService\ControllerServiceConsumer.cpp" />
+    <ClCompile Include="ControllerService\ControllerServiceLegacySignals.cpp" />
     <ClCompile Include="ControllerService\ControllerServiceProducer.cpp" />
     <ClCompile Include="ControllerService\ControllerServiceServiceEventAdapter.cpp" />
     <ClCompile Include="ControllerService\ControllerServiceServiceEventArgs.cpp" />
     <ClCompile Include="ControllerService\ControllerServiceSignals.cpp" />
-    <ClCompile Include="ControllerService\ControllerServiceWatcher.cpp" />
     <ClCompile Include="LampGroup\LampGroupConsumer.cpp" />
+    <ClCompile Include="LampGroup\LampGroupLegacySignals.cpp" />
     <ClCompile Include="LampGroup\LampGroupProducer.cpp" />
     <ClCompile Include="LampGroup\LampGroupServiceEventAdapter.cpp" />
     <ClCompile Include="LampGroup\LampGroupServiceEventArgs.cpp" />
     <ClCompile Include="LampGroup\LampGroupSignals.cpp" />
-    <ClCompile Include="LampGroup\LampGroupWatcher.cpp" />
     <ClCompile Include="Lamp\LampConsumer.cpp" />
+    <ClCompile Include="Lamp\LampLegacySignals.cpp" />
     <ClCompile Include="Lamp\LampProducer.cpp" />
     <ClCompile Include="Lamp\LampServiceEventAdapter.cpp" />
     <ClCompile Include="Lamp\LampServiceEventArgs.cpp" />
     <ClCompile Include="Lamp\LampSignals.cpp" />
-    <ClCompile Include="Lamp\LampWatcher.cpp" />
     <ClCompile Include="MasterScene\MasterSceneConsumer.cpp" />
+    <ClCompile Include="MasterScene\MasterSceneLegacySignals.cpp" />
     <ClCompile Include="MasterScene\MasterSceneProducer.cpp" />
     <ClCompile Include="MasterScene\MasterSceneServiceEventAdapter.cpp" />
     <ClCompile Include="MasterScene\MasterSceneServiceEventArgs.cpp" />
     <ClCompile Include="MasterScene\MasterSceneSignals.cpp" />
-    <ClCompile Include="MasterScene\MasterSceneWatcher.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -309,17 +309,17 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Preset\PresetConsumer.cpp" />
+    <ClCompile Include="Preset\PresetLegacySignals.cpp" />
     <ClCompile Include="Preset\PresetProducer.cpp" />
     <ClCompile Include="Preset\PresetServiceEventAdapter.cpp" />
     <ClCompile Include="Preset\PresetServiceEventArgs.cpp" />
     <ClCompile Include="Preset\PresetSignals.cpp" />
-    <ClCompile Include="Preset\PresetWatcher.cpp" />
     <ClCompile Include="Scene\SceneConsumer.cpp" />
+    <ClCompile Include="Scene\SceneLegacySignals.cpp" />
     <ClCompile Include="Scene\SceneProducer.cpp" />
     <ClCompile Include="Scene\SceneServiceEventAdapter.cpp" />
     <ClCompile Include="Scene\SceneServiceEventArgs.cpp" />
     <ClCompile Include="Scene\SceneSignals.cpp" />
-    <ClCompile Include="Scene\SceneWatcher.cpp" />
     <ClCompile Include="TypeConversionHelpers.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

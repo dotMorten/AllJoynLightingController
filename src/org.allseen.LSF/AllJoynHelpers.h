@@ -5,18 +5,7 @@
 //   Changes to this file may cause incorrect behavior and will be lost if  
 //   the code is regenerated.
 //
-//   Tool: AllJoynCodeGenerator.exe
-//
-//   This tool is located in the Windows 10 SDK and the Windows 10 AllJoyn 
-//   Visual Studio Extension in the Visual Studio Gallery.  
-//
-//   The generated code should be packaged in a Windows 10 C++/CX Runtime  
-//   Component which can be consumed in any UWP-supported language using 
-//   APIs that are available in Windows.Devices.AllJoyn.
-//
-//   Using AllJoynCodeGenerator - Invoke the following command with a valid 
-//   Introspection XML file and a writable output directory:
-//     AllJoynCodeGenerator -i <INPUT XML FILE> -o <OUTPUT DIRECTORY>
+//   For more information, see: http://go.microsoft.com/fwlink/?LinkID=623246
 // </auto-generated>
 //-----------------------------------------------------------------------------
 #pragma once
@@ -36,12 +25,35 @@ if (Windows::Devices::AllJoyn::AllJoynStatus::Ok != alljoynStatus)  \
 }   \
 }
 
+
+namespace org { namespace allseen { namespace LSF { 
+
+public interface class ISignalEmitter
+{
+    property Windows::Devices::AllJoyn::AllJoynBusObject^ BusObject
+    {
+        Windows::Devices::AllJoyn::AllJoynBusObject^ get();
+    }
+
+    property Windows::Devices::AllJoyn::AllJoynSession^ Session
+    {
+        Windows::Devices::AllJoyn::AllJoynSession^ get();
+    }
+};
+
+} } } 
+
+
 class AllJoynHelpers
 {
 public:
     // The Windows::Devices::AllJoyn::AllJoynBusAttachment class wraps the alljoyn_busattachment type.  This
     // function gets the underlying alljoyn_busattachment.
     static alljoyn_busattachment GetInternalBusAttachment(_In_ Windows::Devices::AllJoyn::AllJoynBusAttachment^ busAttachment);
+
+    // The Windows::Devices::AllJoyn::AllJoynBusObject class wraps the alljoyn_busobject type.  This
+    // function gets the underlying alljoyn_busobject.
+    static alljoyn_busobject AllJoynHelpers::GetInternalBusObject(_In_ Windows::Devices::AllJoyn::AllJoynBusObject^ busObject);
 
     // Create the alljoyn_interfacedescriptions described in introspectionXml and add them to the busAttachment.
     static QStatus CreateInterfaces(_Inout_ Windows::Devices::AllJoyn::AllJoynBusAttachment^ busAttachment, _In_ PCSTR introspectionXml);

@@ -44,9 +44,6 @@
     <ClCompile Include="ControllerService\ControllerServiceSignals.cpp">
       <Filter>ControllerService</Filter>
     </ClCompile>
-    <ClCompile Include="ControllerService\ControllerServiceWatcher.cpp">
-      <Filter>ControllerService</Filter>
-    </ClCompile>
     <ClCompile Include="Lamp\LampConsumer.cpp">
       <Filter>Lamp</Filter>
     </ClCompile>
@@ -60,9 +57,6 @@
       <Filter>Lamp</Filter>
     </ClCompile>
     <ClCompile Include="Lamp\LampSignals.cpp">
-      <Filter>Lamp</Filter>
-    </ClCompile>
-    <ClCompile Include="Lamp\LampWatcher.cpp">
       <Filter>Lamp</Filter>
     </ClCompile>
     <ClCompile Include="LampGroup\LampGroupConsumer.cpp">
@@ -80,9 +74,6 @@
     <ClCompile Include="LampGroup\LampGroupSignals.cpp">
       <Filter>LampGroup</Filter>
     </ClCompile>
-    <ClCompile Include="LampGroup\LampGroupWatcher.cpp">
-      <Filter>LampGroup</Filter>
-    </ClCompile>
     <ClCompile Include="MasterScene\MasterSceneConsumer.cpp">
       <Filter>MasterScene</Filter>
     </ClCompile>
@@ -96,9 +87,6 @@
       <Filter>MasterScene</Filter>
     </ClCompile>
     <ClCompile Include="MasterScene\MasterSceneSignals.cpp">
-      <Filter>MasterScene</Filter>
-    </ClCompile>
-    <ClCompile Include="MasterScene\MasterSceneWatcher.cpp">
       <Filter>MasterScene</Filter>
     </ClCompile>
     <ClCompile Include="Preset\PresetConsumer.cpp">
@@ -116,9 +104,6 @@
     <ClCompile Include="Preset\PresetSignals.cpp">
       <Filter>Preset</Filter>
     </ClCompile>
-    <ClCompile Include="Preset\PresetWatcher.cpp">
-      <Filter>Preset</Filter>
-    </ClCompile>
     <ClCompile Include="Scene\SceneConsumer.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -134,9 +119,16 @@
     <ClCompile Include="Scene\SceneSignals.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\SceneWatcher.cpp">
-      <Filter>Scene</Filter>
+    <ClCompile Include="ControllerService\ControllerServiceLegacySignals.cpp">
+      <Filter>ControllerService</Filter>
     </ClCompile>
+    <ClCompile Include="Lamp\LampLegacySignals.cpp">
+      <Filter>Lamp</Filter>
+    </ClCompile>
+    <ClCompile Include="LampGroup\LampGroupLegacySignals.cpp" />
+    <ClCompile Include="MasterScene\MasterSceneLegacySignals.cpp" />
+    <ClCompile Include="Preset\PresetLegacySignals.cpp" />
+    <ClCompile Include="Scene\SceneLegacySignals.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -162,9 +154,6 @@
       <Filter>ControllerService</Filter>
     </ClInclude>
     <ClInclude Include="ControllerService\ControllerServiceSignals.h">
-      <Filter>ControllerService</Filter>
-    </ClInclude>
-    <ClInclude Include="ControllerService\ControllerServiceWatcher.h">
       <Filter>ControllerService</Filter>
     </ClInclude>
     <ClInclude Include="ControllerService\IControllerServiceService.h">
@@ -195,9 +184,6 @@
     <ClInclude Include="Lamp\LampSignals.h">
       <Filter>Lamp</Filter>
     </ClInclude>
-    <ClInclude Include="Lamp\LampWatcher.h">
-      <Filter>Lamp</Filter>
-    </ClInclude>
     <ClInclude Include="LampGroup\ILampGroupService.h">
       <Filter>LampGroup</Filter>
     </ClInclude>
@@ -220,9 +206,6 @@
       <Filter>LampGroup</Filter>
     </ClInclude>
     <ClInclude Include="LampGroup\LampGroupSignals.h">
-      <Filter>LampGroup</Filter>
-    </ClInclude>
-    <ClInclude Include="LampGroup\LampGroupWatcher.h">
       <Filter>LampGroup</Filter>
     </ClInclude>
     <ClInclude Include="MasterScene\IMasterSceneService.h">
@@ -249,9 +232,6 @@
     <ClInclude Include="MasterScene\MasterSceneSignals.h">
       <Filter>MasterScene</Filter>
     </ClInclude>
-    <ClInclude Include="MasterScene\MasterSceneWatcher.h">
-      <Filter>MasterScene</Filter>
-    </ClInclude>
     <ClInclude Include="Preset\IPresetService.h">
       <Filter>Preset</Filter>
     </ClInclude>
@@ -274,9 +254,6 @@
       <Filter>Preset</Filter>
     </ClInclude>
     <ClInclude Include="Preset\PresetSignals.h">
-      <Filter>Preset</Filter>
-    </ClInclude>
-    <ClInclude Include="Preset\PresetWatcher.h">
       <Filter>Preset</Filter>
     </ClInclude>
     <ClInclude Include="Scene\ISceneService.h">
@@ -303,8 +280,15 @@
     <ClInclude Include="Scene\SceneSignals.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\SceneWatcher.h">
-      <Filter>Scene</Filter>
+    <ClInclude Include="ControllerService\ControllerServiceLegacySignals.h">
+      <Filter>ControllerService</Filter>
     </ClInclude>
+    <ClInclude Include="Lamp\LampLegacySignals.h">
+      <Filter>Lamp</Filter>
+    </ClInclude>
+    <ClInclude Include="LampGroup\LampGroupLegacySignals.h" />
+    <ClInclude Include="MasterScene\MasterSceneLegacySignals.h" />
+    <ClInclude Include="Preset\PresetLegacySignals.h" />
+    <ClInclude Include="Scene\SceneLegacySignals.h" />
   </ItemGroup>
 </Project>

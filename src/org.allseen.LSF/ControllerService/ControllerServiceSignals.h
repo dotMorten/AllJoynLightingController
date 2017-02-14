@@ -5,18 +5,7 @@
 //   Changes to this file may cause incorrect behavior and will be lost if  
 //   the code is regenerated.
 //
-//   Tool: AllJoynCodeGenerator.exe
-//
-//   This tool is located in the Windows 10 SDK and the Windows 10 AllJoyn 
-//   Visual Studio Extension in the Visual Studio Gallery.  
-//
-//   The generated code should be packaged in a Windows 10 C++/CX Runtime  
-//   Component which can be consumed in any UWP-supported language using 
-//   APIs that are available in Windows.Devices.AllJoyn.
-//
-//   Using AllJoynCodeGenerator - Invoke the following command with a valid 
-//   Introspection XML file and a writable output directory:
-//     AllJoynCodeGenerator -i <INPUT XML FILE> -o <OUTPUT DIRECTORY>
+//   For more information, see: http://go.microsoft.com/fwlink/?LinkID=623246
 // </auto-generated>
 //-----------------------------------------------------------------------------
 #pragma once
@@ -59,12 +48,11 @@ public:
     }
 
 internal:
-    void Initialize(_In_ alljoyn_busobject busObject, _In_ alljoyn_sessionid sessionId);
+    void Initialize(_In_ org::allseen::LSF::ISignalEmitter^ emitter);
     void CallControllerServiceLightingResetReceived(_In_ ControllerServiceSignals^ sender, _In_ ControllerServiceControllerServiceLightingResetReceivedEventArgs^ args);
 
 private:
-    alljoyn_busobject m_busObject;
-    alljoyn_sessionid m_sessionId;
+	org::allseen::LSF::ISignalEmitter^ m_emitter;
 
     virtual event Windows::Foundation::EventHandler<Platform::Object^>^ _ControllerServiceLightingResetReceived;
 

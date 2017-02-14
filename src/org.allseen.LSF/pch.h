@@ -6,18 +6,7 @@
 //   Changes to this file may cause incorrect behavior and will be lost if  
 //   the code is regenerated.
 //
-//   Tool: AllJoynCodeGenerator.exe
-//
-//   This tool is located in the Windows 10 SDK and the Windows 10 AllJoyn 
-//   Visual Studio Extension in the Visual Studio Gallery.  
-//
-//   The generated code should be packaged in a Windows 10 C++/CX Runtime  
-//   Component which can be consumed in any UWP-supported language using 
-//   APIs that are available in Windows.Devices.AllJoyn.
-//
-//   Using AllJoynCodeGenerator - Invoke the following command with a valid 
-//   Introspection XML file and a writable output directory:
-//     AllJoynCodeGenerator -i <INPUT XML FILE> -o <OUTPUT DIRECTORY>
+//   For more information, see: http://go.microsoft.com/fwlink/?LinkID=623246
 // </auto-generated>
 //-----------------------------------------------------------------------------
 #pragma once
@@ -48,8 +37,8 @@
 #include "ControllerService\ControllerServiceEventArgs.h"
 #include "ControllerService\IControllerServiceService.h"
 #include "ControllerService\ControllerServiceSignals.h"
+#include "ControllerService\ControllerServiceLegacySignals.h"
 #include "ControllerService\ControllerServiceProducer.h"
-#include "ControllerService\ControllerServiceWatcher.h"
 #include "ControllerService\ControllerServiceConsumer.h"
 #include "ControllerService\ControllerServiceServiceEventArgs.h"
 #include "ControllerService\ControllerServiceServiceEventAdapter.h"
@@ -59,8 +48,8 @@
 #include "Lamp\LampEventArgs.h"
 #include "Lamp\ILampService.h"
 #include "Lamp\LampSignals.h"
+#include "Lamp\LampLegacySignals.h"
 #include "Lamp\LampProducer.h"
-#include "Lamp\LampWatcher.h"
 #include "Lamp\LampConsumer.h"
 #include "Lamp\LampServiceEventArgs.h"
 #include "Lamp\LampServiceEventAdapter.h"
@@ -70,8 +59,8 @@
 #include "LampGroup\LampGroupEventArgs.h"
 #include "LampGroup\ILampGroupService.h"
 #include "LampGroup\LampGroupSignals.h"
+#include "LampGroup\LampGroupLegacySignals.h"
 #include "LampGroup\LampGroupProducer.h"
-#include "LampGroup\LampGroupWatcher.h"
 #include "LampGroup\LampGroupConsumer.h"
 #include "LampGroup\LampGroupServiceEventArgs.h"
 #include "LampGroup\LampGroupServiceEventAdapter.h"
@@ -81,8 +70,8 @@
 #include "MasterScene\MasterSceneEventArgs.h"
 #include "MasterScene\IMasterSceneService.h"
 #include "MasterScene\MasterSceneSignals.h"
+#include "MasterScene\MasterSceneLegacySignals.h"
 #include "MasterScene\MasterSceneProducer.h"
-#include "MasterScene\MasterSceneWatcher.h"
 #include "MasterScene\MasterSceneConsumer.h"
 #include "MasterScene\MasterSceneServiceEventArgs.h"
 #include "MasterScene\MasterSceneServiceEventAdapter.h"
@@ -92,8 +81,8 @@
 #include "Preset\PresetEventArgs.h"
 #include "Preset\IPresetService.h"
 #include "Preset\PresetSignals.h"
+#include "Preset\PresetLegacySignals.h"
 #include "Preset\PresetProducer.h"
-#include "Preset\PresetWatcher.h"
 #include "Preset\PresetConsumer.h"
 #include "Preset\PresetServiceEventArgs.h"
 #include "Preset\PresetServiceEventAdapter.h"
@@ -103,8 +92,8 @@
 #include "Scene\SceneEventArgs.h"
 #include "Scene\ISceneService.h"
 #include "Scene\SceneSignals.h"
+#include "Scene\SceneLegacySignals.h"
 #include "Scene\SceneProducer.h"
-#include "Scene\SceneWatcher.h"
 #include "Scene\SceneConsumer.h"
 #include "Scene\SceneServiceEventArgs.h"
 #include "Scene\SceneServiceEventAdapter.h"
